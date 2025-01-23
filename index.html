@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Gamja+Flower&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #f8ede5;
+            background-color: #fbeee6;
             margin: 0;
             -webkit-user-select: none; 
             -ms-user-select: none; 
@@ -20,19 +20,20 @@
             margin-top: 80px;
         }
         #sprite_container {
-            
+           position: absolute; 
         }
         
         #sprite {
             width: 100px;
             animation: swiggle 3s linear infinite; 
+            opacity: 0.85;
         }
         
         #sprite_physics{
             position: absolute;
             top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: calc(50% - 50px); 
+            transform: translateX(0);
             transition: left 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); 
         }
                 
@@ -57,9 +58,6 @@
             border-bottom: 30px solid transparent;
         }
 
-
-
-
         @keyframes swiggle {
             0% {
                 transform: rotate(0deg);
@@ -80,8 +78,6 @@
             }
         }
 
-       
-
     </style>
 </head>
 <body>
@@ -99,29 +95,33 @@
         </div>
     </div>
 
-    
     <script>
-        let position = window.innerWidth / 2 ;  
-        var speed = 15;      
+        const sprite_container = document.getElementById('sprite_container');
+        const sprite_physics = document.getElementById('sprite_physics');
+
         const right_key = document.getElementById('right_key');
         const left_key = document.getElementById('left_key');
 
-        const sprite_container = document.getElementById('sprite_container')
-        const sprite_physics = document.getElementById('sprite_physics')
+        const screen_width = window.innerWidth;
 
+        let position = screen_width / 2; 
+        const speed = 15;
 
+        sprite_physics.style.left = `${position - 50}px`;
 
-        
-        right_key.addEventListener('click',()=>{
-            position +=speed;
-            sprite_physics.style.left=position+'px';
+        right_key.addEventListener('click', () => {
+            if (position + speed < screen_width - 50) { 
+                position += speed;
+                sprite_physics.style.left = `${position - 50}px`;
+            }
+        });
 
-        })
-        left_key.addEventListener('click',()=>{
-            position -=speed;
-            sprite_physics.style.left=position+'px';
-        })
+        left_key.addEventListener('click', () => {
+            if (position - speed > 50) { 
+                position -= speed;
+                sprite_physics.style.left = `${position - 50}px`;
+            }
+        });
     </script>
 </body>
 </html>
-
