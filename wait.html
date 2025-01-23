@@ -1,0 +1,62 @@
+#content_1{
+    display: none;
+}
+#content_1_image{
+    width: 200px;
+    opacity: 0.7;
+}
+#title{
+    font-family: "Delius Swash Caps", serif;
+    font-size: 30px;
+    opacity: 0.7; 
+}
+#bracket_message{
+    font-family: "Gamja Flower", serif;
+    opacity: 0.5;
+}
+.button_common{
+    padding: 5px 15px 5px 15px;
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.466);
+    border: 2px solid black;
+    font-family: "Gamja Flower", serif;
+    opacity: 0.8;
+}
+#start{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#instruction{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0.6;
+    font-family: "Gamja Flower", serif;
+    font-size: 18px;
+
+}
+
+
+ <!-- <div id="content_1">
+                <img src="./third_1.png" alt="aa" id="content_1_image">
+                <h1 id="title">Help Zharon!</h1>
+                <p id="bracket_message">(from Ayin)</p>
+                <p id="instruction">move away from ayin using buttons</p>
+                <button id="start" class="button_common">Start ></button>
+            </div> -->
+
+            <script>
+                document.getElementById('start').addEventListener('click',()=>{
+                    document.getElementById('content_1').style.display = 'none';
+                    document.getElementById('content_2').style.display = 'block';
+                })
+            </script>
+
+            <!-- 
+font-family: "Gamja Flower", serif;
+font-family: "Playwrite FR Trad", serif;
+font-family: "Indie Flower", serif; 
+-->

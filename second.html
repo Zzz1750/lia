@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shh shh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color: rgb(247, 232, 244);
+        }
+        #image1{
+            opacity: 0.7;
+            width: 150px;
+        }
+        #content{
+            text-align: center;
+            margin-top: 100px;
+        }
+        #title{
+            font-size: 20px;
+            font-family: "Playwrite FR Trad", serif;
+            opacity: 0.8;
+        }
+        #from_lia{
+            font-size: 15px;
+            font-family: "Gamja Flower", serif;
+        }
+        #content_1{
+            display: block;
+        }
+        #content_2{
+            display: none;
+        }
+        .button_common{
+            padding: 5px 15px 5px 15px;
+            font-size: 25px;
+            background-color: white;
+            border: 2px solid black;
+            font-family: "Gamja Flower", serif;
+            opacity: 0.8;
+        }
+        #start{
+            padding: 0px 10px 5px 10px;
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="content_1">
+            <img src="./second_1.png" alt="second_1" id="image1">
+            <p id="title">...Whisper...</p>
+            <p id="from_lia">its time i guess...</p>
+            <button id="start" onclick="westart()" class="button_common">yea?</button>
+        </div>
+        <div id="content_2">
+            <p id="act">hii</p>
+            <button id="next">hi</button>
+        </div>
+    </div>
+
+    <script>
+        const content_1 = document.getElementById('content_1');
+        const content_2 = document.getElementById('content_2');
+
+        function westart(){
+            content_1.style.display = 'none';
+            content_2.style.display = 'block';
+        }
+        
+
+        var ar = ['so umm..','i have something on my mind'];
+        var but = ['?','ok?'];
+
+        var i = 0;
+        var button = document.getElementById("next");
+        button.addEventListener("click", function(){
+            if(i < ar.length){
+                document.getElementById("act").innerHTML = ar[i];
+                document.getElementById("next").innerHTML = but[i];
+                i++;
+            }});
+    </script>
+</body>
+</html>
+
+
+
+<!-- 
+font-family: "Gamja Flower", serif;
+font-family: "Playwrite FR Trad", serif;
+font-family: "Indie Flower", serif; 
+-->

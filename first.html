@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
+    <title>UwU</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+            background-color: rgb(252, 251, 247);
+            font-family: "Indie Flower", serif;
+        }
+   
+        #content_2{
+            display: none;
+            position: relative; 
+            width: 100%;
+            height: 100vh; 
+            overflow: hidden;
+        }   
+        #content_3{
+            display: none;
+        }     
+        #content{
+            text-align: center;
+            margin-top: 100px;
+        }
+        #yes{
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #no{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .button_common{
+            padding: 5px 15px 5px 15px;
+            font-size: 30px;
+            background-color: white;
+            border: 2px solid black;
+            font-family: "Gamja Flower", serif;
+            opacity: 0.8;
+        }
+        #first_img{
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 200px;
+        }
+        #for_lia{
+            font-family: "Playwrite FR Trad", serif;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-size: 25px;
+        }
+        #disclaimer{
+            position: absolute;
+            top: 53%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-family:cursive;
+            opacity: 0.4;
+            font-size: 12px;
+        }
+
+        input[type="checkbox"] {
+            appearance: none; 
+            width: 20px;
+            height: 20px;
+            border: 2px solid #000;
+            border-radius: 4px;
+            position: relative;
+            vertical-align: middle; 
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: black; 
+            border: 2px solid black; 
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 10px;
+            height: 10px;
+            background-color: white; 
+            border-radius: 2px;
+        }
+
+        #agree_form{
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            opacity: 0.8;
+        }
+        #submitBtn{
+            margin-top: 20%;
+            font-size: 20px;
+            padding: 5px 20px 5px 20px;
+            background-color: white;    
+            border: 2px solid rgba(0, 0, 0, 0.758);
+            font-family: "Gamja Flower", serif;
+        }
+        #question_here{
+            font-size: 30px;
+            font-family: "Playwrite FR Trad", serif;
+        }
+        #yes{
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #no {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 5px 20px 5px 20px;
+            transition: top 0.5s ease, left 0.5s ease; 
+        }
+        #dont_click{
+            margin-top: -9%;
+        }
+        #second_img{
+            width: 200px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #proud_text{
+            font-family: "Gamja Flower", serif;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+
+
+        <div id="content_1">
+            <img src="./1.png" alt="lol" id="first_img">
+            <p id="for_lia">für Lianzaa</p>
+            <p id="disclaimer">im sorry for creeping you out before :( <br><br>I didn't know how things worked (I still don't)</p>
+            <form id="agree_form">
+                <label for="agree">
+                    <input type="checkbox" id="agree"> I forgive you 
+                </label><br>
+                <button id="submitBtn" disabled onclick="submitForm(event)">Ayin ></button>
+            </form>
+        </div>
+
+
+        <div id="content_2">
+            <h1 id="question_here">Had Dolo?</h1>
+            <p id="dont_click">(dont click no )</p>
+            <button id="yes" class="button_common">yes</button>
+            <button id="no" class="button_common">no</button>
+        </div>
+
+        <div id="content_3">
+            <img src="./2.png" alt="2" id="second_img">
+            <p id="proud_text">OMGOMGOMG! <br>I am so proud of uuu!</p>
+        </div>
+          
+    </div>
+    <script>
+        const checkbox = document.getElementById('agree');
+        const submitBtn = document.getElementById('submitBtn');
+
+        checkbox.addEventListener('change', () => {
+            submitBtn.disabled = !checkbox.checked;
+        });
+
+        function submitForm(event) {
+            event.preventDefault();
+            to_page2();
+        }
+
+        function to_page2(){
+            document.getElementById('content_1').style.display='none';
+            document.getElementById('content_2').style.display='block';
+        }
+    </script>
+    <script>
+        const button = document.getElementById('no');
+        const container = document.getElementById('content_2');
+    
+        button.addEventListener('click', () => {
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+        
+            const maxTop = containerRect.height - buttonRect.height; 
+            const maxLeft = containerRect.width - buttonRect.width; 
+        
+            const minTop = 0;
+            const minLeft = 0;
+        
+            const newTop = Math.random() * (maxTop - minTop) + minTop;
+            const newLeft = Math.random() * (maxLeft - minLeft) + minLeft;
+        
+            button.style.top = `${newTop}px`;
+            button.style.left = `${newLeft}px`;
+        });
+        
+    </script>
+
+</body>
+</html>
