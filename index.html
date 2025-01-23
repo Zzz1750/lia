@@ -182,76 +182,50 @@
         });
     </script>
     <script>
-        const cloudSpeed = 2; // Control the speed of clouds
-        const minCloudSpacing = 200; // Minimum spacing between clouds
+        const cloudSpeed = 2; 
         const clouds = document.querySelectorAll(".cloud_common");
         const screenHeight = window.innerHeight;
         const screenWidth = window.innerWidth;
+        const cloudSpacing = 250; 
+        const horizontalPadding = 150; 
     
-        // Initialize cloud positions with proper spacing
         function initializeClouds() {
-            let prevPositions = []; // Store previous positions to avoid overlap
-    
-            clouds.forEach((cloud) => {
-                let validPosition = false;
-                let newX, newY;
-    
-                while (!validPosition) {
-                    newX = Math.random() * (screenWidth - cloud.offsetWidth);
-                    newY = Math.random() * (screenHeight - cloud.offsetHeight);
-    
-                    validPosition = prevPositions.every(([px, py]) => {
-                        const dx = Math.abs(px - newX);
-                        const dy = Math.abs(py - newY);
-                        return dx > minCloudSpacing && dy > minCloudSpacing;
-                    });
-                }
-    
-                prevPositions.push([newX, newY]);
-                cloud.style.left = `${newX}px`;
-                cloud.style.top = `${newY}px`;
+            clouds.forEach((cloud, index) => {
+                const isLeft = index % 2 === 0; 
+                const xPos = isLeft 
+                    ? horizontalPadding 
+                    : screenWidth - cloud.offsetWidth - horizontalPadding; 
+                const yPos = index * cloudSpacing; 
+                cloud.style.left = `${xPos}px`;
+                cloud.style.top = `${yPos}px`;
             });
         }
     
-        // Animate the clouds and reset them with proper spacing
         function animateClouds() {
-            let prevPositions = []; // Store previous positions during animation
-    
-            clouds.forEach((cloud) => {
+            clouds.forEach((cloud, index) => {
                 let currentTop = parseFloat(cloud.style.top);
     
-                // Move the cloud upwards
                 currentTop -= cloudSpeed;
                 cloud.style.top = `${currentTop}px`;
     
-                // Reset cloud when it moves out of view
                 if (currentTop + cloud.offsetHeight < 0) {
-                    let validPosition = false;
-                    let newX, newY;
-    
-                    while (!validPosition) {
-                        newX = Math.random() * (screenWidth - cloud.offsetWidth);
-                        newY = screenHeight; // Reset below the screen
-    
-                        validPosition = prevPositions.every(([px, py]) => {
-                            const dx = Math.abs(px - newX);
-                            return dx > minCloudSpacing; // Ensure horizontal spacing
-                        });
-                    }
-    
-                    prevPositions.push([newX, newY]);
-                    cloud.style.left = `${newX}px`;
-                    cloud.style.top = `${newY}px`;
+                    const isLeft = index % 2 === 0; 
+                    const xPos = isLeft 
+                        ? horizontalPadding 
+                        : screenWidth - cloud.offsetWidth - horizontalPadding; 
+                    const yPos = screenHeight + index * cloudSpacing; 
+                    cloud.style.left = `${xPos}px`;
+                    cloud.style.top = `${yPos}px`;
                 }
             });
     
             requestAnimationFrame(animateClouds);
         }
     
-        // Initialize and start animation
         initializeClouds();
         animateClouds();
     </script>
+    
     
 </body>
 </html>
