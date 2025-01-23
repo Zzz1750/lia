@@ -14,6 +14,7 @@
             -webkit-user-select: none; 
             -ms-user-select: none; 
             user-select: none; 
+            overflow: hidden;
         }
         #content{
             text-align: center;
@@ -26,7 +27,7 @@
         #sprite {
             width: 100px;
             animation: swiggle 3s linear infinite; 
-            opacity: 0.85;
+            opacity: 0.8;
         }
         
         #sprite_physics{
@@ -35,6 +36,7 @@
             left: calc(50% - 50px); 
             transform: translateX(0);
             transition: left 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            z-index: 2;
         }
                 
         #left_key{
@@ -44,6 +46,9 @@
             transform: translate(-50%,-50%);
             border-right: 55px solid #505050;
         }
+        #left_key:active{
+            border-right: 55px solid #595959;
+        }
         #right_key{
             position: absolute;
             top: 85%;
@@ -51,12 +56,53 @@
             transform: translate(-50%,-50%);
             border-left: 55px solid #505050;
         }
+        #right_key:active{
+            border-left: 55px solid #595959;
+        }
         .common_key{
             width: 0;
             height: 0;
             border-top: 30px solid transparent;
             border-bottom: 30px solid transparent;
+            z-index: 2;
         }
+
+        #point_text{
+            position: absolute;
+            top: 2%;
+            left: 90%;
+            transform: translate(-50%,-50%);
+            opacity: 0.5;
+            font-family: "Gamja Flower", serif;
+            font-size: 25px;
+        }
+        
+        .cloud_common{
+            position: absolute;
+            opacity: 0.4;
+            filter: brightness(0) invert(1);
+            width: 400px;
+            z-index: -1;
+            transform: translate(-50%,-50%);
+        }
+       #cloud1{
+        top: 10%;
+        left: 100%;
+       }
+       #cloud2{
+        top: 30%;
+        left: 0%;
+       }
+       #cloud3{
+        top: 80%;
+        left: 80%;
+       }
+       #cloud4{
+        top: 100%;
+        left: 10%;
+       }
+    
+   
 
         @keyframes swiggle {
             0% {
@@ -91,6 +137,17 @@
                 </div>      
                 <div id="left_key" class="common_key"></div>
                 <div id="right_key" class="common_key"></div>
+                <p id="point_text">x10</p>
+
+                
+            </div>
+            <div id="cloud_set">
+                <img src="./clouds/cloud1.png" alt="cloud1" id="cloud1" class="cloud_common" draggable="false">
+                <img src="./clouds/cloud2.png" alt="cloud2" id="cloud2" class="cloud_common" draggable="false">
+                <img src="./clouds/cloud3.png" alt="cloud3" id="cloud3" class="cloud_common" draggable="false">
+                <img src="./clouds/cloud4.png" alt="cloud4" id="cloud4" class="cloud_common" draggable="false">
+                
+
             </div>
         </div>
     </div>
@@ -110,6 +167,7 @@
         sprite_physics.style.left = `${position - 50}px`;
 
         right_key.addEventListener('click', () => {
+            
             if (position + speed < screen_width - 50) { 
                 position += speed;
                 sprite_physics.style.left = `${position - 50}px`;
@@ -123,5 +181,77 @@
             }
         });
     </script>
+    <script>
+        const cloudSpeed = 2; // Control the speed of clouds
+        const minCloudSpacing = 200; // Minimum spacing between clouds
+        const clouds = document.querySelectorAll(".cloud_common");
+        const screenHeight = window.innerHeight;
+        const screenWidth = window.innerWidth;
+    
+        // Initialize cloud positions with proper spacing
+        function initializeClouds() {
+            let prevPositions = []; // Store previous positions to avoid overlap
+    
+            clouds.forEach((cloud) => {
+                let validPosition = false;
+                let newX, newY;
+    
+                while (!validPosition) {
+                    newX = Math.random() * (screenWidth - cloud.offsetWidth);
+                    newY = Math.random() * (screenHeight - cloud.offsetHeight);
+    
+                    validPosition = prevPositions.every(([px, py]) => {
+                        const dx = Math.abs(px - newX);
+                        const dy = Math.abs(py - newY);
+                        return dx > minCloudSpacing && dy > minCloudSpacing;
+                    });
+                }
+    
+                prevPositions.push([newX, newY]);
+                cloud.style.left = `${newX}px`;
+                cloud.style.top = `${newY}px`;
+            });
+        }
+    
+        // Animate the clouds and reset them with proper spacing
+        function animateClouds() {
+            let prevPositions = []; // Store previous positions during animation
+    
+            clouds.forEach((cloud) => {
+                let currentTop = parseFloat(cloud.style.top);
+    
+                // Move the cloud upwards
+                currentTop -= cloudSpeed;
+                cloud.style.top = `${currentTop}px`;
+    
+                // Reset cloud when it moves out of view
+                if (currentTop + cloud.offsetHeight < 0) {
+                    let validPosition = false;
+                    let newX, newY;
+    
+                    while (!validPosition) {
+                        newX = Math.random() * (screenWidth - cloud.offsetWidth);
+                        newY = screenHeight; // Reset below the screen
+    
+                        validPosition = prevPositions.every(([px, py]) => {
+                            const dx = Math.abs(px - newX);
+                            return dx > minCloudSpacing; // Ensure horizontal spacing
+                        });
+                    }
+    
+                    prevPositions.push([newX, newY]);
+                    cloud.style.left = `${newX}px`;
+                    cloud.style.top = `${newY}px`;
+                }
+            });
+    
+            requestAnimationFrame(animateClouds);
+        }
+    
+        // Initialize and start animation
+        initializeClouds();
+        animateClouds();
+    </script>
+    
 </body>
 </html>
