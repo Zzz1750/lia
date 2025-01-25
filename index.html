@@ -1,195 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tales from the Midnight Pen</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Gamja+Flower&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: rgb(236, 244, 249);
-            margin: 0;
-        }
-        #story_head{
-            font-family: "Delius Swash Caps", serif;
-        }
-        #from{
-            font-family: "Gamja Flower", cursive;
-            opacity: 0.5;
-        }
-        #frog{
-            width: 30%;
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.9;
-        }
-        #content_1{
-            margin-top: 200px;
-            opacity: 0.9;
-            padding: 15px;
-        }
-        #ig{
-            position: absolute;
-            width: 5%;
-            opacity: 0.7;
-            left: 90%;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tales from the Midnight Pen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Gamja+Flower&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      margin: 0;
+      overflow-x: hidden;
+  }
+  #story_head{
+      font-family: "Delius Swash Caps", serif;
+      color: white;
+  }
+  #from{
+      font-family: "Gamja Flower", cursive;
+      opacity: 0.5;
+      color: white;
 
-        .text_container {
-            position: relative;
-            height: 600px; 
-            overflow: hidden; 
-          }
-          
-          .text_container::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px; 
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgb(236, 244, 249) 100%);
-            pointer-events: none; 
-          }
-          
-          #para {
-            font-family: 'Times New Roman', Times, serif;
-            opacity: 0.8;
-            margin: 0;
-            padding: 0 20px; 
-          }
-          
-          #signup{
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 135%;
-            font-size: 15px;
-            padding: 5px 15px 5px 15px;
-            background-color: rgb(236, 244, 249);
-            border: 1px solid black;
-            opacity: 0.8;
-            border-radius: 10px;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-          }
-          #loc_fake{
-            font-size: 13px;  
-            opacity: 0.7; 
-          }
-          #footer{
-            position: relative;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            padding: 5px;
-            height: 50px;
-            text-align: center;
-            align-content: center;
-            color: rgba(255, 255, 255, 0.4);
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 10px;
-          }
-          #signup_title{
-            position: absolute;
-            top: 5%;
-            left: 20%;
-            transform: translate(-50%,-50%);
-            font-family: "Delius Swash Caps", serif;
-            font-size: 40px;
-            opacity: 0.8;
-          }
-          #signup_form{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            font-family:Arial, Helvetica, sans-serif;
-          }
-          .texta{
-            width: 300px;
-            height: 40px;
-            border: 1px solid rgba(0, 0, 0, 0.753);
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 14px;
-          }
-         
-          #motivation1{
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            z-index: 2;
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            opacity: 0.5;
-          }
-          #actual_content1{display: none;}
-    </style>
-</head>
+  }
+  #frog{
+      filter: invert(100%);
+      width: 30%;
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.9;
+  }
+  #content_1{
+      margin-top: 200px;
+      opacity: 0.9;
+      padding: 15px;
+      height: 850px;
+  }
+  #ig{
+    filter: invert(100%);
+      position: absolute;
+      width: 5%;
+      opacity: 0.7;
+      left: 90%;
+  }
 
-<body>
-    <div id="actual_content1">
-        <hr>
-        <img src="./story_image.png" alt="frog" id="frog">
-        <div id="content_1">
-        <h1 id="story_head">The Shadow on Blackthorn Road</h1>
-        <p id="loc_fake"><u>ztory</u> > <u>i like it</u> > <u>thriller</u></p>
-        <img src="./instagram.png" alt="ig" id="ig"> 
-        <p id="from"><u>from Toad Series</u></p>
-        <hr>
-        <div class="text_container">
-            <p id="para">
-                <br>
-              Blackthorn Road was infamous in the small, mist-shrouded town of Hollow Creek. Locals whispered about the stretch of road that snaked through the dense, ancient forest. No one dared tread there after dark—not since the disappearances began fifty years ago.
-              <br><br>It was said that a woman named Eleanor Sinclair had vanished on that very road. She was a solitary figure who lived in a grand, decaying mansion deep within the woods. The night she disappeared, a storm had rolled in, the kind that rattled windows and silenced even the bravest of townsfolk. Her carriage was found overturned, her driver dead, but Eleanor was never seen again. Rumors spread that she’d been taken by something unnatural.
-              <br><br>Decades later, Thomas, a skeptic and journalist with a thirst for debunking myths, decided to investigate the legend for an exposé. Armed with a flashlight, a notebook, and a sense of bravado, he ventured onto Blackthorn Road just as the sun dipped below the horizon. The air felt unnaturally cold, and the trees loomed like silent sentinels.
-             <br><br>As Thomas walked, he felt an odd sense of being watched. The shadows seemed to shift when he wasn’t looking, and the sound of rustling leaves seemed to follow him. Dismissing it as his imagination, he pressed on.
-                <br><br>
-             About a mile in, the mist thickened, curling around his legs and muffling the crunch of his boots. That’s when he heard it—a faint whisper, barely audible. “Thomas...”
-            </p>
-          </div>
-          <button id="signup">Sign up its Free!</button>
-          <br><br>
-          
-    </div> 
-    <div id="footer">
-        @2025 all right reserved
-    </div>
-    </div>
+  .text_container {
+     color: white;
+      position: relative;
+      height: 600px; 
+      overflow: hidden; 
+    }
     
-    <div id="content_2">
-        <h1 id="signup_title">SignUp</h1>
-        <p id="motivation1">Quick Setup!</p>
-        <form id="signup_form">
-            <input type="text" id="name" name="name" required class="texta" placeholder="Username"><br><br><br>
-            <input type="email" id="email" name="email" required class="texta" placeholder="Email"><br><br>
-            <label>
-                <input type="checkbox" id="agreeCheckbox">
-                Get info and updates
-              </label><br>
-              <button type="button" id="to_top">Submit</button>
-        </form>
-    </div>
-   
-
-   
-    <script>
-        document.getElementById('signup').addEventListener('click',function(){
-            document.getElementById('actual_content1').style.display = 'none';
-            document.getElementById('content_2').style.display = 'block';
-        })
-    </script>
+    .text_container::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px; 
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgb(7, 7, 7) 100%);
+      pointer-events: none; 
+    }
+    
+    #para {
+      font-family: 'Times New Roman', Times, serif;
+      opacity: 0.8;
+      margin: 0;
+      padding: 0 20px; 
+    }
+    
+    #signup{
+      width: 50%;
+      color: black;
+      background-color: white;
+      border: 0.1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 5px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      padding: 10px 15px 10px 15px;
+      position: absolute;
+      top: 140%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    #loc_fake{
+      color: white;
+      font-size: 13px;  
+      opacity: 0.7; 
+    }
+  </style>
+</head>
+<body>
+    <hr>
+    <img src="./story_image.png" alt="frog" id="frog">
+    <div id="content_1">
+    <h1 id="story_head">The Shadow on Blackthorn Road</h1>
+    <img src="./instagram.png" alt="ig" id="ig"> 
+    <p id="from"><u>from Toad Series</u></p>
+    <hr>
+    <div class="text_container">
+        <p id="para">
+            <br>
+          Blackthorn Road was infamous in the small, mist-shrouded town of Hollow Creek. Locals whispered about the stretch of road that snaked through the dense, ancient forest. No one dared tread there after dark—not since the disappearances began fifty years ago.
+          <br><br>It was said that a woman named Eleanor Sinclair had vanished on that very road. She was a solitary figure who lived in a grand, decaying mansion deep within the woods. The night she disappeared, a storm had rolled in, the kind that rattled windows and silenced even the bravest of townsfolk. Her carriage was found overturned, her driver dead, but Eleanor was never seen again. Rumors spread that she’d been taken by something unnatural.
+          <br><br>Decades later, Thomas, a skeptic and journalist with a thirst for debunking myths, decided to investigate the legend for an exposé. Armed with a flashlight, a notebook, and a sense of bravado, he ventured onto Blackthorn Road just as the sun dipped below the horizon. The air felt unnaturally cold, and the trees loomed like silent sentinels.
+         <br><br>As Thomas walked, he felt an odd sense of being watched. The shadows seemed to shift when he wasn’t looking, and the sound of rustling leaves seemed to follow him. Dismissing it as his imagination, he pressed on.
+            <br><br>
+         About a mile in, the mist thickened, curling around his legs and muffling the crunch of his boots. That’s when he heard it—a faint whisper, barely audible. “Thomas...”
+        </p>
+      </div>
+      <button id="signup">Continue Reading</button>
 </body>
 </html>
-<!-- 
-font-family: "Gamja Flower", serif;
-font-family: "Playwrite FR Trad", serif;
-font-family: "Indie Flower", serif; 
-font-family: "Delius Swash Caps", serif;
-
--->
