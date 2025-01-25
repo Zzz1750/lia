@@ -36,7 +36,6 @@
       margin-top: 200px;
       opacity: 0.9;
       padding: 15px;
-      height: 850px;
   }
   #ig{
     filter: invert(100%);
@@ -80,15 +79,19 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 17px;
       padding: 10px 15px 10px 15px;
-      position: absolute;
-      top: 140%;
+      position: relative;
+      top: 20px;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translateX(-50%);
     }
     #loc_fake{
       color: white;
       font-size: 13px;  
       opacity: 0.7; 
+    }
+    #adjuster{
+      position: relative;
+      height: 50px;
     }
   </style>
 </head>
@@ -112,5 +115,6 @@
         </p>
       </div>
       <button id="signup">Continue Reading</button>
+      <div id="adjuster"></div>
 </body>
 </html>
