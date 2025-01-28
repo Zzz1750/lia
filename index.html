@@ -6,132 +6,118 @@
     <title>Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Gamja+Flower&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet">
     <style>
-        body{
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
             background-color: black;
+            color: white;
             margin: 0;
             overflow-x: hidden;
-            box-sizing: border-box;
+            font-family: "IBM Plex Sans", Arial, sans-serif;
         }
-        #back_button{
+        #back_button {
             position: absolute;
             top: 5%;
             left: 5%;
             filter: invert(100%);
             width: 35px;
             opacity: 0.9;
-          }
-          .continue_button{
+        }
+        .continue_button {
             color: rgba(255, 255, 255, 0.85);
             background-color: black;
             border: 0.1px solid rgba(255, 255, 255, 0.4);
             border-radius: 5px;
-            font-family: Arial, Helvetica, sans-serif;
             font-size: 17px;
-            padding: 15px 20px 15px 20px;
-          }
-          #apple{
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            width: 80%;
-            transform: translate(-50%,-50%);
-            
-          }
-          .logo_image{
+            padding: 15px 20px;
+            margin: 10px auto;
+            display: block;
+        }
+        .logo_image {
             filter: invert(100%);
             width: 20px;
-            position: absolute;
-            top: 48%;
-            left: 10%;
-            transform: translate(-50%,-50%);
-          }
-          #google{
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            width: 80%;
-            transform: translate(-50%,-50%);
-            
-          }
-          #google_image{
-            filter: invert(0%);          
-          }
-          #signup_head{
-            position: absolute;
-            color: white;
-            top: 15%;
-            left: 60%;
-            width: 100%;
-            font-size: 30px;
-            transform: translate(-50%,-50%);
-            font-family: "IBM Plex Sans", serif;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        #signup_head {
+            text-align: center;
+            font-size: 24px;
+            margin: 25% auto 5%;
             font-weight: 400;
-          }
-          .lines{
+        }
+        .lines {
             filter: invert(100%);
             height: 10px;
-            opacity: 0.7;
-            width: 140px;
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%,-50%);
-          }
-          #line1{
-            left: 30%;
-          } 
-          #line2{
-            left: 70%;
-          }
-          #email_label{
-            color: white;
-            position: absolute;
-            top:55%;
-            left: 18%;
-            transform: translate(-50%,-50%);
-            font-family: "IBM Plex Sans", serif;
-            font-size: 20px;
-          }
-          #mail{
-            position: absolute;
-            top: 67%;
+            opacity: 0.2;
+            width: 150px;
+            position: relative;
+            top: 40px;
             left: 50%;
-            width: 70%;
             transform: translate(-50%,-50%);
-            font-family: Arial, Helvetica, sans-serif;
+        }
+        #email_label {
+            display: block;
+            text-align: center;
+            margin-top: 70px;
+            font-size: 20px;
+        }
+        #mail {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 15px;
             background-color: black;
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 5px;
             font-size: 17px;
-            padding: 15px 20px 15px 20px;
             color: white;
-          }
-          #with_mail{
-            width: 70%;
+        }
+        #mail, #apple, #google {
+          max-width: 80%;
+      }
+      
+        #with_mail {
+            max-width: 60%;
             color: black;
             background-color: white;
             border: 0.1px solid rgba(255, 255, 255, 0.4);
             border-radius: 5px;
-            font-family: Arial, Helvetica, sans-serif;
             font-size: 17px;
-            padding: 15px 20px 15px 20px;
-            position: absolute;
-            top: 80%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-          }
+            padding: 15px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            #signup_head {
+                font-size: 20px;
+            }
+            .continue_button, #mail, #with_mail {
+                width: 95%;
+            }
+            #email_label {
+                font-size: 18px;
+            }
+        }
     </style>
 </head>
 <body>
     <img src="./back.png" alt="back" id="back_button">
-        <h1 id="signup_head">Get your free account !</h1>
-        <button id="apple" class="continue_button" onclick="display_content3()"><img src="./apple.png" class="logo_image" alt="google_image" draggable="false"> Continue with Apple</button>
-        <button id="google" class="continue_button" onclick="display_content3()"><img src="./search.png" alt="google_image" class="logo_image" id="google_image" draggable="false"> Continue with Google</button>
-        <img src="./line.png" id="line1" alt="" class="lines">
-        <img src="./line.png" id="line2" class="lines" alt="">
-        <p id="email_label">Email <span style="color: #8fbf76;">*</span></p>
-        <input type="text" id="mail">
-        <button id="with_mail" onclick="validateEmail()">Continue with Email</button>
+    <h1 id="signup_head">Get your free account!</h1>
+    <button id="apple" class="continue_button" onclick="display_content3()">
+        <img src="./apple.png" class="logo_image" alt="Apple"> Continue with Apple
+    </button>
+    <button id="google" class="continue_button" onclick="display_content3()">
+        <img src="./search.png" class="logo_image" id="google_image" alt="Google"> Continue with Google
+    </button>
+    <img src="./line.png" id="line1" alt="" class="lines">
+    <p id="email_label">Email <span style="color: #8fbf76;">*</span></p>
+    <input type="text" id="mail" placeholder="Enter your email">
+    <button id="with_mail" onclick="validateEmail()">Continue with Email</button>
 </body>
 </html>
