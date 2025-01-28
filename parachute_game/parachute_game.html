@@ -11,9 +11,9 @@
         body {
             background-color: #fbeee6;
             margin: 0;
-            -webkit-user-select: none; 
+            /*-webkit-user-select: none; 
             -ms-user-select: none; 
-            user-select: none; 
+            user-select: none; */
             overflow: hidden;
         }
         #content{
@@ -74,7 +74,7 @@
             transform: translate(-50%,-50%);
             opacity: 0.5;
             font-family: "Gamja Flower", serif;
-            font-size: 25px;
+            font-size: 28px;
         }
         
         .cloud_common{
@@ -101,6 +101,20 @@
         top: 100%;
         left: 10%;
        }
+
+       .balls{
+        font-size: 12px;
+        height: 45px;
+        width: 45px;
+        text-align: center;
+        align-content: center;
+        border: 2px dashed rgba(0, 0, 0, 0.4);
+        border-radius: 30px;
+        background-color: rgba(255, 255, 255, 0);
+        color: rgba(0, 0, 0, 0.6);
+        font-family: Arial, Helvetica, sans-serif;
+    }   
+
     
    
 
@@ -123,21 +137,20 @@
                 transform: rotate(0deg);
             }
         }
-
+      
     </style>
 </head>
 <body>
-    <div>
         <div id="content">
             <div id="content_2">
                 <div id="sprite_physics">
-                    <div id="sprite_container">
+                    <div id="sprite_container" style="border: 2px solid black;">
                         <img src="./parachute.png" alt="sprite" id="sprite" draggable="false">
                     </div>
                 </div>      
                 <div id="left_key" class="common_key"></div>
                 <div id="right_key" class="common_key"></div>
-                <p id="point_text">x10</p>
+                <p id="point_text">x3</p>
 
                 
             </div>
@@ -146,11 +159,20 @@
                 <img src="./clouds/cloud2.png" alt="cloud2" id="cloud2" class="cloud_common" draggable="false">
                 <img src="./clouds/cloud3.png" alt="cloud3" id="cloud3" class="cloud_common" draggable="false">
                 <img src="./clouds/cloud4.png" alt="cloud4" id="cloud4" class="cloud_common" draggable="false">
-                
-
             </div>
+            
+
         </div>
-    </div>
+        <div id="ball1" class="balls">ayin</div>
+        <div id="ball2" class="balls">ayin</div>
+        <div id="ball3" class="balls">ayin</div>
+        <div id="ball4" class="balls">ayin</div>
+        <div id="ball5" class="balls">ayin</div>
+        <div id="ball6" class="balls">ayin</div>
+
+
+
+
 
     <script>
         const sprite_container = document.getElementById('sprite_container');
