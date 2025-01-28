@@ -25,7 +25,7 @@
         }
         
         #sprite {
-            width: 80px;
+            width: 60px;
             animation: swiggle 3s linear infinite; 
             opacity: 0.8;
         }
@@ -104,8 +104,8 @@
 
        .balls{
         font-size: 12px;
-        height: 35px;
-        width: 35px;
+        height: 40px;
+        width: 40px;
         text-align: center;
         align-content: center;
         border: 2px dashed rgba(0, 0, 0, 0.4);
@@ -275,7 +275,7 @@
         
             const moveUp = () => {
                 let currentTop = parseFloat(ball.style.top);
-                currentTop -= 1; 
+                currentTop -= 1.8; 
         
                 if (isOverlapping(ball, sprite)) {
                     console.log('Collision detected!');
