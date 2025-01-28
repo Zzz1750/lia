@@ -11,9 +11,9 @@
         body {
             background-color: #fbeee6;
             margin: 0;
-            /*-webkit-user-select: none; 
+            -webkit-user-select: none; 
             -ms-user-select: none; 
-            user-select: none; */
+            user-select: none; 
             overflow: hidden;
         }
         #content{
@@ -25,7 +25,7 @@
         }
         
         #sprite {
-            width: 100px;
+            width: 80px;
             animation: swiggle 3s linear infinite; 
             opacity: 0.8;
         }
@@ -104,8 +104,8 @@
 
        .balls{
         font-size: 12px;
-        height: 45px;
-        width: 45px;
+        height: 35px;
+        width: 35px;
         text-align: center;
         align-content: center;
         border: 2px dashed rgba(0, 0, 0, 0.4);
@@ -144,7 +144,7 @@
         <div id="content">
             <div id="content_2">
                 <div id="sprite_physics">
-                    <div id="sprite_container" style="border: 2px solid black;">
+                    <div id="sprite_container" >
                         <img src="./parachute.png" alt="sprite" id="sprite" draggable="false">
                     </div>
                 </div>      
@@ -163,12 +163,13 @@
             
 
         </div>
-        <div id="ball1" class="balls">ayin</div>
-        <div id="ball2" class="balls">ayin</div>
-        <div id="ball3" class="balls">ayin</div>
-        <div id="ball4" class="balls">ayin</div>
-        <div id="ball5" class="balls">ayin</div>
-        <div id="ball6" class="balls">ayin</div>
+        <div id="ball1" class="balls" style="position: absolute; top: 80%; left: 20%;">ayin</div>
+        <div id="ball2" class="balls" style="position: absolute; top: 80%; left: 40%;">ayin</div>
+        <div id="ball3" class="balls" style="position: absolute; top: 80%; left: 60%;">ayin</div>
+        <div id="ball4" class="balls" style="position: absolute; top: 80%; left: 80%;">ayin</div>
+        <div id="ball5" class="balls" style="position: absolute; top: 90%; left: 30%;">ayin</div>
+        <div id="ball6" class="balls" style="position: absolute; top: 90%; left: 70%;">ayin</div>
+
 
 
 
@@ -184,7 +185,7 @@
         const screen_width = window.innerWidth;
 
         let position = screen_width / 2; 
-        const speed = 15;
+        const speed = 20;
 
         sprite_physics.style.left = `${position - 50}px`;
 
@@ -246,6 +247,60 @@
     
         initializeClouds();
         animateClouds();
+    </script>
+    <script>
+        const balls = document.querySelectorAll('.balls');
+        const sprite = document.getElementById('sprite_container');
+        const viewportHeight = window.innerHeight;
+        const viewportWidth = window.innerWidth;
+    
+        const random = (min, max) => Math.random() * (max - min) + min;
+    
+        const isOverlapping = (el1, el2) => {
+            const rect1 = el1.getBoundingClientRect();
+            const rect2 = el2.getBoundingClientRect();
+            return !(
+                rect1.right < rect2.left ||
+                rect1.left > rect2.right ||
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom
+            );
+        };
+    
+        const moveBall = (ball) => {
+            const randomX = random(0, viewportWidth - 50); 
+            const randomStartY = random(viewportHeight / 2, viewportHeight); 
+            ball.style.left = `${randomX}px`;
+            ball.style.top = `${randomStartY}px`; 
+        
+            const moveUp = () => {
+                let currentTop = parseFloat(ball.style.top);
+                currentTop -= 1; 
+        
+                if (isOverlapping(ball, sprite)) {
+                    console.log('Collision detected!');
+                    ball.style.top = `${viewportHeight}px`; 
+                    setTimeout(() => moveBall(ball), random(1000, 2000)); 
+                    return;
+                }
+        
+                if (currentTop > -50) {
+                    ball.style.top = `${currentTop}px`; 
+                    requestAnimationFrame(moveUp);
+                } else {
+                    ball.style.top = `${viewportHeight}px`; 
+                    setTimeout(() => moveBall(ball), random(1000, 2000));
+                }
+            };
+        
+            requestAnimationFrame(moveUp);
+        };
+        
+        
+    
+        balls.forEach((ball) => {
+            moveBall(ball);
+        });
     </script>
     
     
