@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Gamja+Flower&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #e8e6fb;
+            background-color: #fbeee6;
             margin: 0;
             -webkit-user-select: none; 
             -ms-user-select: none; 
@@ -268,33 +268,37 @@
         };
     
         const moveBall = (ball) => {
-            const randomX = random(0, viewportWidth - 50); 
-            const randomStartY = random(viewportHeight / 2, viewportHeight); 
+            const randomX = random(0, viewportWidth - 50);
+            const randomStartY = random(viewportHeight / 2, viewportHeight);
             ball.style.left = `${randomX}px`;
-            ball.style.top = `${randomStartY}px`; 
+            ball.style.top = `${randomStartY}px`;
         
-            const moveUp = () => {
+            const moveUp = (timestamp, lastTimestamp) => {
+                if (!lastTimestamp) lastTimestamp = timestamp; // Initialize previous timestamp
+                const elapsed = timestamp - lastTimestamp; // Calculate elapsed time
+        
                 let currentTop = parseFloat(ball.style.top);
-                currentTop -= 2; 
+                currentTop -= (elapsed / 16.67) * 6; // Normalize speed to ~60 FPS
         
                 if (isOverlapping(ball, sprite)) {
                     console.log('Collision detected!');
-                    ball.style.top = `${viewportHeight}px`; 
-                    setTimeout(() => moveBall(ball), random(1000, 2000)); 
+                    ball.style.top = `${viewportHeight}px`;
+                    setTimeout(() => moveBall(ball), random(1000, 2000));
                     return;
                 }
         
                 if (currentTop > -50) {
-                    ball.style.top = `${currentTop}px`; 
-                    requestAnimationFrame(moveUp);
+                    ball.style.top = `${currentTop}px`;
+                    requestAnimationFrame((newTimestamp) => moveUp(newTimestamp, timestamp));
                 } else {
-                    ball.style.top = `${viewportHeight}px`; 
+                    ball.style.top = `${viewportHeight}px`;
                     setTimeout(() => moveBall(ball), random(1000, 2000));
                 }
             };
         
             requestAnimationFrame(moveUp);
         };
+        
         
         
     
