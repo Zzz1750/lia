@@ -3,358 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help!</title>
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Gamja+Flower&family=Indie+Flower&family=Playwrite+FR+Trad:wght@100..400&display=swap" rel="stylesheet">
     <style>
-        body {
+        body{
             background-color: #fbeee6;
-            margin: 0;
-            -webkit-user-select: none; 
-            -ms-user-select: none; 
-            user-select: none; 
-            overflow: hidden;
-        }
-        #content{
             text-align: center;
-            margin-top: 80px;
-        }
-        #sprite_container {
-            width: 40px; 
-            height: 40px; 
-            position: relative; 
-            display: flex; 
-            justify-content: center;
-            align-items: center; 
-            overflow: visible; 
         }
         
-        #sprite {
-            width: 60px; 
-            height: auto; 
-            margin: -15px; 
-            animation: swiggle 3s linear infinite;
+        #content_1_image{
+            width: 150px;
+            opacity: 0.7;
+            margin-top: 100px;
+        }
+        #title{
+            font-family: "Delius Swash Caps", serif;
+            font-size: 30px;
+            opacity: 0.7; 
+        }
+        #bracket_message{
+            font-family: "Gamja Flower", serif;
+            opacity: 0.5;
+        }
+        .button_common{
+            padding: 5px 15px 5px 15px;
+            font-size: 25px;
+            background-color: rgba(255, 255, 255, 0.466);
+            border: 2px solid black;
+            font-family: "Gamja Flower", serif;
             opacity: 0.8;
         }
-        
-        
-        #sprite_physics{
+        #start{
             position: absolute;
-            top: 100px;
-            left: calc(50% - 50px); 
-            transform: translateX(0);
-            transition: left 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            z-index: 2;
-        }
-                
-        #left_key{
-            position: absolute;
-            top: 85%;
-            left: 25%;
+            top: 70%;
+            left: 50%;
             transform: translate(-50%,-50%);
-            border-right: 55px solid #505050;
         }
-        #left_key:active{
-            border-right: 55px solid #595959;
-        }
-        #right_key{
+        #instruction{
             position: absolute;
-            top: 85%;
-            left: 75%;
+            top: 80%;
+            left: 50%;
             transform: translate(-50%,-50%);
-            border-left: 55px solid #505050;
-        }
-        #right_key:active{
-            border-left: 55px solid #595959;
-        }
-        .common_key{
-            width: 0;
-            height: 0;
-            border-top: 30px solid transparent;
-            border-bottom: 30px solid transparent;
-            z-index: 2;
-        }
-
-        #point_text{
-            position: absolute;
-            top: 2%;
-            left: 90%;
-            transform: translate(-50%,-50%);
-            opacity: 0.5;
+            opacity: 0.6;
             font-family: "Gamja Flower", serif;
-            font-size: 28px;
-        }
+            font-size: 18px;
         
-        .cloud_common{
-            position: absolute;
-            opacity: 0.4;
-            filter: brightness(0) invert(1);
-            width: 400px;
-            z-index: -1;
-            transform: translate(-50%,-50%);
         }
-       #cloud1{
-        top: 10%;
-        left: 100%;
-       }
-       #cloud2{
-        top: 30%;
-        left: 0%;
-       }
-       #cloud3{
-        top: 80%;
-        left: 80%;
-       }
-       #cloud4{
-        top: 100%;
-        left: 10%;
-       }
-
-       .balls{
-        font-size: 12px;
-        height: 40px;
-        width: 40px;
-        text-align: center;
-        align-content: center;
-        border: 2px dashed rgba(0, 0, 0, 0.4);
-        border-radius: 30px;
-        background-color: rgba(255, 255, 255, 0);
-        color: rgba(0, 0, 0, 0.6);
-        font-family: Arial, Helvetica, sans-serif;
-    }   
-
-    #final_image{
-        position: absolute;
-        top: 30%;
-        left: 48%;
-        transform: translate(-50%, -50%);
-        width: 150px;
-        opacity: 0.6;
-    }
-    #compliment{
-        font-size: 30px;
-        font-family: "Gamja Flower", serif;
-        opacity: 0.6;
-        position: absolute;
-        top: 46%;
-        left: 50%;
-        text-align: center;
-        transform: translate(-50%,-50%);
-    }
-    #refresh{
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        background-color: rgba(255, 255, 255, 0.5);
-        font-family: "Gamja Flower", serif;
-        padding: 5px 15px 5px 15px;
-
-    }
-   #content3{
-    display: none;
-   }
-
-        @keyframes swiggle {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            25%{
-                transform: rotate(10deg);
-            }
-            50%{
-                transform: rotate(0deg);
-            }
-            
-            75% {
-                transform: rotate(-10deg);
-            }
-            100%{
-                transform: rotate(0deg);
-            }
-        }
-      
     </style>
+
 </head>
-<body>   
-        <div id="content">
-            <div id="content_2">
-                <div id="sprite_physics">
-                    <div id="sprite_container" >
-                        <img src="./parachute.png" alt="sprite" id="sprite" draggable="false">
-                    </div>
-                </div>      
-                <div id="left_key" class="common_key"></div>
-                <div id="right_key" class="common_key"></div>
-                <p id="point_text">x10</p>
-
-                
-            </div>
-            <div id="cloud_set">
-                <img src="./clouds/cloud1.png" alt="cloud1" id="cloud1" class="cloud_common" draggable="false">
-                <img src="./clouds/cloud2.png" alt="cloud2" id="cloud2" class="cloud_common" draggable="false">
-                <img src="./clouds/cloud3.png" alt="cloud3" id="cloud3" class="cloud_common" draggable="false">
-                <img src="./clouds/cloud4.png" alt="cloud4" id="cloud4" class="cloud_common" draggable="false">
-            </div>
-            
-            <div id="ball1" class="balls" style="position: absolute; top: 80%; left: 20%;">ayin</div>
-            <div id="ball2" class="balls" style="position: absolute; top: 80%; left: 40%;">ayin</div>
-            <div id="ball3" class="balls" style="position: absolute; top: 80%; left: 60%;">ayin</div>
-            <div id="ball4" class="balls" style="position: absolute; top: 80%; left: 80%;">ayin</div>
-            <div id="ball5" class="balls" style="position: absolute; top: 90%; left: 30%;">ayin</div>
-            <div id="ball6" class="balls" style="position: absolute; top: 90%; left: 70%;">ayin</div>
-    
-
-        </div>
-       
-       
-
-
-
-
-    <script>
-        const sprite_container = document.getElementById('sprite_container');
-        const sprite_physics = document.getElementById('sprite_physics');
-
-        const right_key = document.getElementById('right_key');
-        const left_key = document.getElementById('left_key');
-
-        const screen_width = window.innerWidth;
-
-        let position = screen_width / 2; 
-        const speed = 30;
-
-        sprite_physics.style.left = `${position - 50}px`;
-
-        right_key.addEventListener('click', () => {
-            
-            if (position + speed < screen_width - 50) { 
-                position += speed;
-                sprite_physics.style.left = `${position - 50}px`;
-            }
-        });
-
-        left_key.addEventListener('click', () => {
-            if (position - speed > 50) { 
-                position -= speed;
-                sprite_physics.style.left = `${position - 50}px`;
-            }
-        });
-    </script>
-    <script>
-        const cloudSpeed = 2; 
-        const clouds = document.querySelectorAll(".cloud_common");
-        const screenHeight = window.innerHeight;
-        const screenWidth = window.innerWidth;
-        const cloudSpacing = 250; 
-        const horizontalPadding = 150; 
-    
-        function initializeClouds() {
-            clouds.forEach((cloud, index) => {
-                const isLeft = index % 2 === 0; 
-                const xPos = isLeft 
-                    ? horizontalPadding 
-                    : screenWidth - cloud.offsetWidth - horizontalPadding; 
-                const yPos = index * cloudSpacing; 
-                cloud.style.left = `${xPos}px`;
-                cloud.style.top = `${yPos}px`;
-            });
-        }
-    
-        function animateClouds() {
-            clouds.forEach((cloud, index) => {
-                let currentTop = parseFloat(cloud.style.top);
-    
-                currentTop -= cloudSpeed;
-                cloud.style.top = `${currentTop}px`;
-    
-                if (currentTop + cloud.offsetHeight < 0) {
-                    const isLeft = index % 2 === 0; 
-                    const xPos = isLeft 
-                        ? horizontalPadding 
-                        : screenWidth - cloud.offsetWidth - horizontalPadding; 
-                    const yPos = screenHeight + index * cloudSpacing; 
-                    cloud.style.left = `${xPos}px`;
-                    cloud.style.top = `${yPos}px`;
-                }
-            });
-    
-            requestAnimationFrame(animateClouds);
-        }
-    
-        initializeClouds();
-        animateClouds();
-    </script>
-    <script>
-        const balls = document.querySelectorAll('.balls');
-        const sprite = document.getElementById('sprite_container');
-        const viewportHeight = window.innerHeight;
-        const viewportWidth = window.innerWidth;
-        var score = 10;
-    
-        const random = (min, max) => Math.random() * (max - min) + min;
-    
-        const isOverlapping = (el1, el2) => {
-            const rect1 = el1.getBoundingClientRect();
-            const rect2 = el2.getBoundingClientRect();
-            return !(
-                rect1.right < rect2.left ||
-                rect1.left > rect2.right ||
-                rect1.bottom < rect2.top ||
-                rect1.top > rect2.bottom
-            );
-        };
-    
-        const moveBall = (ball) => {
-            const randomX = random(0, viewportWidth - 50);
-            const randomStartY = random(viewportHeight / 2, viewportHeight);
-            ball.style.left = `${randomX}px`;
-            ball.style.top = `${randomStartY}px`;
-        
-            const moveUp = (timestamp, lastTimestamp) => {
-                if (!lastTimestamp) lastTimestamp = timestamp; 
-                const elapsed = timestamp - lastTimestamp; 
-        
-                let currentTop = parseFloat(ball.style.top);
-                currentTop -= (elapsed / 16.67) * 5; 
-        
-                if (isOverlapping(ball, sprite)) {
-                    score -= 1;
-                    if(score == 0){
-                        result_screen();
-                    }
-                    else{
-                        document.getElementById('point_text').innerHTML='x'+score;
-                    }
-                    ball.style.top = `${viewportHeight}px`;
-                    setTimeout(() => moveBall(ball), random(1000, 2000));
-                    return;
-                }
-        
-                if (currentTop > -50) {
-                    ball.style.top = `${currentTop}px`;
-                    requestAnimationFrame((newTimestamp) => moveUp(newTimestamp, timestamp));
-                } else {
-                    ball.style.top = `${viewportHeight}px`;
-                    setTimeout(() => moveBall(ball), random(1000, 2000));
-                }
-            };
-        
-            requestAnimationFrame(moveUp);
-        };
-        
-        balls.forEach((ball) => {
-            moveBall(ball);
-        });
-    </script>
-    <script>
-        function result_screen() {
-            window.location.href = './result.html';
-        }
-        
-    </script>
-    
+<body>
+    <img src="./parachute.png" alt="aa" id="content_1_image">
+    <h1 id="title">Help SHARRONN!</h1>
+    <p id="bracket_message">(from Ayin)</p>
+    <p id="instruction">move away from ayin using buttons</p>
+    <button id="start" class="button_common" onclick="window.location.href='./game.html'">Start ></button>
 </body>
 </html>
